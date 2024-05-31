@@ -18,8 +18,6 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-    @Autowired
-    private JwtProperties jwtProperties;
 
     @GetMapping("/login")
     public Result<String> login(String username, String password) {
