@@ -12,7 +12,7 @@ import java.util.List;
 
 @Mapper
 public interface ChatListMapper {
-    @Select("select * from chat_list where user_id=#{userId} order by create_time desc")
+    @Select("select * from chat_list where user_id=#{userId} order by update_time desc")
     List<ChatListVO> listByUserId(String userId);
 
     @Delete("delete from chat_list where chat_id=#{chatId}")

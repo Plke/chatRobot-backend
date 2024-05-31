@@ -1,16 +1,12 @@
 package com.chat.controller;
 
-import com.chat.entity.po.User;
 import com.chat.entity.properties.JwtProperties;
 import com.chat.entity.vo.Result;
 import com.chat.service.UserService;
-import com.chat.utils.JwtUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.HashMap;
-import java.util.Map;
 
 @RestController
 @Slf4j
@@ -46,9 +42,10 @@ public class UserController {
 
     }
 
-    @GetMapping("/avater/{userId}")
-    public Result<String> getAvater(@PathVariable String userId){
-
-        return Result.success(userService.getAvater(userId));
+    @GetMapping("/avatar/{name}")
+    public Result<String> getUserAvatar(@PathVariable String name){
+        log.info("获取头像:{}",name);
+        return Result.success(userService.getAvatar(name));
     }
+
 }

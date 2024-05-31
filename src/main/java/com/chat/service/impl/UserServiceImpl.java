@@ -1,6 +1,7 @@
 package com.chat.service.impl;
 
 import com.chat.constant.Constants;
+import com.chat.context.BaseContext;
 import com.chat.entity.po.User;
 import com.chat.entity.properties.JwtProperties;
 import com.chat.entity.vo.Result;
@@ -59,7 +60,7 @@ public class UserServiceImpl implements UserService {
         userMapper.insert(newUser);
         Map<String, Object> claims = new HashMap<>();
 
-        claims.put("userID", newUser.getUserId());
+        claims.put("userId", newUser.getUserId());
         String token = JwtUtil.createJWT(jwtProperties.getUserSecretKey(), jwtProperties.getUserTtl(), claims);
 
 
@@ -67,10 +68,13 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public String getAvater(String userId) {
-        String url=userMapper.getAvater(userId);
+    public String getAvatar(String name) {
+        if(name.equals("robot")){
+            return Constants.ROBOT_AVATAR;
+        }
+        String url=userMapper.getAvater(BaseContext.getCurrentId());
         if(url==null|| url.isEmpty()){
-            url= Constants.DEFAULT_AVATER;
+            url= Constants.DEFAULT_AVATAR;
         }
         return url;
     }
