@@ -14,13 +14,12 @@ import org.springframework.web.method.HandlerMethod;
 import org.springframework.web.servlet.HandlerInterceptor;
 
 
-
 /**
  * jwt令牌校验的拦截器
  */
 @Component
 @Slf4j
-public class JwtUserInterceptor implements HandlerInterceptor  {
+public class JwtUserInterceptor implements HandlerInterceptor {
 
     @Autowired
     private JwtProperties jwtProperties;

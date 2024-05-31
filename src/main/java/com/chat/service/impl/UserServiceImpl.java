@@ -4,7 +4,6 @@ import com.chat.constant.Constants;
 import com.chat.context.BaseContext;
 import com.chat.entity.po.User;
 import com.chat.entity.properties.JwtProperties;
-import com.chat.entity.vo.Result;
 import com.chat.mapper.UserMapper;
 import com.chat.service.UserService;
 import com.chat.utils.JwtUtil;
@@ -14,7 +13,6 @@ import org.springframework.stereotype.Service;
 import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Objects;
 import java.util.UUID;
 
 @Service
@@ -69,12 +67,12 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public String getAvatar(String name) {
-        if(name.equals("robot")){
+        if (name.equals("robot")) {
             return Constants.ROBOT_AVATAR;
         }
-        String url=userMapper.getAvater(BaseContext.getCurrentId());
-        if(url==null|| url.isEmpty()){
-            url= Constants.DEFAULT_AVATAR;
+        String url = userMapper.getAvater(BaseContext.getCurrentId());
+        if (url == null || url.isEmpty()) {
+            url = Constants.DEFAULT_AVATAR;
         }
         return url;
     }

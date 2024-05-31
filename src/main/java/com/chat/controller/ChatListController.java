@@ -4,7 +4,6 @@ import com.chat.entity.dto.ChatListDTO;
 import com.chat.entity.vo.ChatListVO;
 import com.chat.entity.vo.MessageListVO;
 import com.chat.entity.vo.Result;
-
 import com.chat.service.ChatListService;
 import com.chat.service.MessageServie;
 import lombok.extern.slf4j.Slf4j;
@@ -26,6 +25,7 @@ public class ChatListController {
 
     /**
      * 获取该用户的对话列表
+     *
      * @return
      */
     @GetMapping("/chatlist")
@@ -37,6 +37,7 @@ public class ChatListController {
 
     /**
      * 更具对话id删除对话
+     *
      * @param chatId
      * @return
      */
@@ -49,22 +50,23 @@ public class ChatListController {
 
     /**
      * 创建新的对话
+     *
      * @return
      */
     @PostMapping("/chatlist")
-    public Result<String> addNewChat()
-    {
-        String chatId=chatListService.addNewChat();
+    public Result<String> addNewChat() {
+        String chatId = chatListService.addNewChat();
         return Result.success(chatId);
     }
 
     /**
      * 更新对话名称
+     *
      * @param chatListDTO
      * @return
      */
     @PutMapping("/{newName}")
-    public Result<String> renameChat(@RequestBody ChatListDTO chatListDTO){
+    public Result<String> renameChat(@RequestBody ChatListDTO chatListDTO) {
         log.info("renameChat: {}", chatListDTO);
         chatListService.update(chatListDTO);
         return Result.success();
@@ -72,13 +74,14 @@ public class ChatListController {
 
     /**
      * 更具对话id，获取对话内容
+     *
      * @param chatId
      * @return
      */
     @GetMapping("/{chatId}")
     public Result<MessageListVO> getMessageByChatId(@PathVariable String chatId) {
-        log.info("获取对话内容，chatId: {}",chatId);
-        MessageListVO messageListVO=messageServie.getMessageListByChatId(chatId);
+        log.info("获取对话内容，chatId: {}", chatId);
+        MessageListVO messageListVO = messageServie.getMessageListByChatId(chatId);
         return Result.success(messageListVO);
     }
 }

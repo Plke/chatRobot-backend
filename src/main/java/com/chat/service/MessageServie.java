@@ -6,5 +6,5 @@ import com.chat.entity.vo.MessageListVO;
 public interface MessageServie {
     MessageListVO getMessageListByChatId(String chatId);
 
-    String   getNewMessage(MessageDTO messageDTO);
+    String getNewMessage(MessageDTO messageDTO);
 }

@@ -5,11 +5,10 @@ import org.apache.commons.httpclient.methods.GetMethod;
 import org.apache.commons.httpclient.params.HttpMethodParams;
 
 import java.io.IOException;
-import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 
 
-public class HttpClientUtil  {
+public class HttpClientUtil {
     public static String doGet(String url) {
         //1.生成HttpClient对象并设置参数
         HttpClient httpClient = new HttpClient();
@@ -35,7 +34,7 @@ public class HttpClientUtil  {
             //5.处理HTTP响应内容
             //HTTP响应头部信息，这里简单打印
             Header[] headers = getMethod.getResponseHeaders();
-            for(Header h : headers) {
+            for (Header h : headers) {
                 System.out.println(h.getName() + "---------------" + h.getValue());
             }
             //读取HTTP响应内容，这里简单打印网页内容

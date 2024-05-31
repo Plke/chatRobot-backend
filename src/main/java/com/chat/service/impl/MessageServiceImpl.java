@@ -1,6 +1,5 @@
 package com.chat.service.impl;
 
-import com.alibaba.fastjson.JSONObject;
 import com.chat.constant.Constants;
 import com.chat.context.BaseContext;
 import com.chat.entity.dto.ChatListDTO;
@@ -11,13 +10,10 @@ import com.chat.mapper.ChatListMapper;
 import com.chat.mapper.MessageMapper;
 import com.chat.service.MessageServie;
 import com.chat.utils.HttpClientUtil;
-import org.apache.commons.lang3.RandomStringUtils;
-import org.apache.commons.lang3.RandomUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.time.LocalDateTime;
@@ -47,7 +43,7 @@ public class MessageServiceImpl implements MessageServie {
         messageDTO.setCreateTime(LocalDateTime.now());
         messageDTO.setUserId(BaseContext.getCurrentId());
         messageMapper.insert(messageDTO);
-        ChatListDTO chatListDTO=ChatListDTO.builder()
+        ChatListDTO chatListDTO = ChatListDTO.builder()
                 .chatId(messageDTO.getChatId())
                 .updateTime(LocalDateTime.now())
                 .build();
@@ -58,9 +54,9 @@ public class MessageServiceImpl implements MessageServie {
 //        JSONObject jsonObject = JSONObject.parseObject(res);
 //        String content = jsonObject.getString("content");
 
-        String content= HttpClientUtil.doGet("http://127.0.0.1:5000/predict?input="+userContent);
-        System.out.println("回复："+content);
-        MessageDTO robot=MessageDTO.builder()
+        String content = HttpClientUtil.doGet("http://127.0.0.1:5000/predict?input=" + userContent);
+        System.out.println("回复：" + content);
+        MessageDTO robot = MessageDTO.builder()
                 .userId(Constants.ROBOT_ID)
                 .content(content)
                 .chatId(messageDTO.getChatId())

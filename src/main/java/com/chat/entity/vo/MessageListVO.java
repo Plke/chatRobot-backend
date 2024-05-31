@@ -9,6 +9,6 @@ import java.util.List;
 @Data
 @Builder
 public class MessageListVO {
-    private String  chatId;
+    private String chatId;
     private List<Message> messageList;
 }
