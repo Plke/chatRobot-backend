@@ -34,9 +34,8 @@ public class UserServiceImpl implements UserService {
 
         Map<String, Object> claims = new HashMap<>();
         claims.put("userId", user.getUserId());
-        String token = JwtUtil.createJWT(jwtProperties.getUserSecretKey(), jwtProperties.getUserTtl(), claims);
 
-        return token;
+        return JwtUtil.createJWT(jwtProperties.getUserSecretKey(), jwtProperties.getUserTtl(), claims);
     }
 
     @Override
@@ -59,10 +58,9 @@ public class UserServiceImpl implements UserService {
         Map<String, Object> claims = new HashMap<>();
 
         claims.put("userId", newUser.getUserId());
-        String token = JwtUtil.createJWT(jwtProperties.getUserSecretKey(), jwtProperties.getUserTtl(), claims);
 
 
-        return token;
+        return JwtUtil.createJWT(jwtProperties.getUserSecretKey(), jwtProperties.getUserTtl(), claims);
     }
 
     @Override

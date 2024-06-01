@@ -7,4 +7,5 @@ public class Constants {
     public static final String ROBOT_AVATAR = "http://localhost:8080/img/1.jpg";
     public static final String ROBOT_ID = "robot";
 
+    public static final String REQUEST_FILE_PATH ="http://localhost:8080/img/" ;
 }

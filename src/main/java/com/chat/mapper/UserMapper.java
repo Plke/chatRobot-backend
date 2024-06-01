@@ -18,4 +18,7 @@ public interface UserMapper {
 
     @Select("select avater from user where user_id=#{userId}")
     String getAvater(String userId);
+
+    void update(User user);
+
 }
